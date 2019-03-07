@@ -18,9 +18,9 @@ static getSearchAttributes() {
 As *Searchable Columns*, que compõem o array retornado por `getSearchAttributes()`, devem obrigatóriamente conter os seguintes campos:
  * value: *nome do atributo do domain que o objeto referencia*
  * text: *nome user friendly do atributo*
- * type: *tipo de input busca do campo* **SBSearchType** 
+ * type: *tipo de input busca do campo* **SearchType** 
 
- > Cada **SBSearchType** tem seus respectivos campos opcionais
+ > Cada **SearchType** tem seus respectivos campos opcionais
 
 ---
 ### **No IndexStore**
@@ -47,11 +47,11 @@ Importe o componente e insira ele no JSX passando o IndexStore como prop.
 
 * **fixedFilter**: Atributo para ser sempre inserido como um dos parâmetros da pesquisa.
 
-## **SBSearchType**
+## **SearchType**
 
 O tipo do atributo de pesquisa irá definir o que o PowerSearch espera de input, além das operações possíveis
 
-Os tipos reconhecidos pelo **SBSearchType** são:
+Os tipos reconhecidos pelo **SearchType** são:
 
 ### Text 
  Textos como descrições, nomes de pessoas e ruas.
@@ -61,7 +61,7 @@ Os tipos reconhecidos pelo **SBSearchType** são:
 { 
   value: 'column', 
   text: 'Coluna', 
-  type: SBSearchType.TEXT 
+  type: SearchType.TEXT 
 }
 
 ```
@@ -83,7 +83,7 @@ Os tipos reconhecidos pelo **SBSearchType** são:
     { value: 'OPCAO_1', text: 'Opção 1' },
     { value: 'OPCAO_2', text: 'Opção 2' },
   ],
-  type: SBSearchType.ENUM 
+  type: SearchType.ENUM 
 }
 
 ```
@@ -100,20 +100,37 @@ Os tipos reconhecidos pelo **SBSearchType** são:
 { 
   value: 'column',
   text: 'Coluna',
-  type: SBSearchType.POWER_SELECT,
+  type: SearchType.POWER_SELECT,
   powerSelectProps: {
     domain: ColunaDomain,
     service: ColunaService,
     options: { sort: 'COLUMN,asc' },
-    attributes: ['column']
+    attributes: ['column'],
   }, 
 }
 ```
 > **Operações disponíveis**
 > *  Igual a
 > *  Diferente de
-> *  Entre
-> *  No mês de
+
+### powerSelectProps (Opcional)
+ Caso o usuário deseje realizar a busca por outro campo que não seja a chave primária do Domain, basta adicionar os atributos `value` e `text`, que são a chave primária do Domain e o campo que se deseja realizar o autocomplete, respectivamente.
+
+ ```js
+{ 
+  value: 'column',
+  text: 'Coluna',
+  type: SearchType.POWER_SELECT,
+  powerSelectProps: {
+    domain: ColunaDomain,
+    service: ColunaService,
+    options: { sort: 'COLUMN,asc' },
+    attributes: ['column'],
+    value: 'column',
+    text: 'nome'
+  }, 
+}
+```
 
 ---
 
@@ -124,7 +141,7 @@ Os tipos reconhecidos pelo **SBSearchType** são:
 { 
   value: 'column',
   text: 'Coluna',
-  type: SBSearchType.NUMBER,
+  type: SearchType.NUMBER,
 }
 ```
 > **Operações disponíveis**
@@ -145,7 +162,7 @@ Os tipos reconhecidos pelo **SBSearchType** são:
 { 
   value: 'column',
   text: 'Coluna',
-  type: SBSearchType.DATE,
+  type: SearchType.DATE,
 }
 ```
 > **Operações disponíveis**
@@ -166,11 +183,11 @@ Os tipos reconhecidos pelo **SBSearchType** são:
 { 
   value: 'column',
   text: 'Coluna',
-  type: SBSearchType.MONTH,
+  type: SearchType.MONTH,
 }
 ```
 > **Operações disponíveis**
-> *  No mês
+> *  No mês de
 
 ---
 
@@ -190,7 +207,7 @@ Os tipos reconhecidos pelo **SBSearchType** são:
 >   value: 'column',
 >   context: 'periodoDefault',
 >   text: 'Coluna',
->   type: SBSearchType.MONTH
+>   type: SearchType.MONTH
 > }
 >```
 

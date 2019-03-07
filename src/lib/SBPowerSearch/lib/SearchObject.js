@@ -1,9 +1,9 @@
-import Operators from '~/constants/Operators';
-import moment from 'moment';
-import { isADateString } from '~/utils/date';
-import General from '~/constants/General';
+import Operators from './Operators';
 
-export default class SBSearchObject {
+import moment from 'moment';
+import { General, isADateString } from './utils';
+
+export default class SearchObject {
   property = {};
   operator = {};
   value = [];
