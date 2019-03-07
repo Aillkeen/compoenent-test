@@ -11,8 +11,6 @@ import PowerSearchStore from "./lib/PowerSearchStore";
 import Operators from "./lib/Operators";
 import { General, getValueDate, isSearchFormat } from "./lib/utils";
 
-//import AppStore from '~/stores/AppStore';
-
 /**
  * @author Julio e Helisson
  */
@@ -62,41 +60,38 @@ class SBPowerSearch extends React.Component {
   }
 
   componentDidMount() {
-    this._appendSearchObjectFromContext();
+    this._appendSearchObjectFromSuggest();
     this._updateValueList();
   }
 
-  _appendSearchObjectFromContext() {
+  _appendSearchObjectFromSuggest() {
     if (this.store.columns) {
       this.store.columns.forEach(column => {
-        if (column.context) {
-          const valueInContext = AppStore.get(column.context);
-          if (valueInContext) {
-            let operator = {};
-            const property = { value: column.value, text: column.text };
-            let value = [];
-            if (valueInContext instanceof Date) {
-              operator = {
-                value: Operators.POWER_SEARCH_PERIOD_MONTH.operator,
-                text: Operators.POWER_SEARCH_PERIOD_MONTH.text
-              };
-              value.push({
-                value: getValueDate(valueInContext),
-                text: moment(valueInContext).format(
-                  General.shortBrazilianFormatWithYear
-                )
-              });
-            } else {
-              operator = {
-                value: Operators.EQUAL_TO.operator,
-                text: Operators.EQUAL_TO.text
-              };
-              value.push({ value: valueInContext, text: valueInContext });
-            }
-            this.store.pushFilterParameters(
-              new SearchObject(property, operator, value)
-            );
+        if (column.suggest) {
+          let operator = {};
+          const property = { value: column.value, text: column.text };
+          let value = [];
+          if (column.suggest instanceof Date) {
+            operator = {
+              value: Operators.POWER_SEARCH_PERIOD_MONTH.operator,
+              text: Operators.POWER_SEARCH_PERIOD_MONTH.text
+            };
+            value.push({
+              value: getValueDate(column.suggest),
+              text: moment(column.suggest).format(
+                General.shortBrazilianFormatWithYear
+              )
+            });
+          } else {
+            operator = {
+              value: Operators.EQUAL_TO.operator,
+              text: Operators.EQUAL_TO.text
+            };
+            value.push({ value: column.suggest, text: column.suggest });
           }
+          this.store.pushFilterParameters(
+            new SearchObject(property, operator, value)
+          );
         }
       });
     }
