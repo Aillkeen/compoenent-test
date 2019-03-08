@@ -49,7 +49,7 @@ module.exports = env => {
 
   return {
     mode: "production",
-    entry: "./src/index.js",
+    entry: "./index.js",
     output: {
       filename: "index.js",
       path: path.join(__dirname, "build/")
