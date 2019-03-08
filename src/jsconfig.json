@@ -1,0 +1,20 @@
+{
+  "compilerOptions": {
+      "module": "commonjs",
+      "baseUrl": ".",
+      "paths": {
+          "~/*": ["./*"]
+      },
+      "emitDecoratorMetadata": true,    
+      "experimentalDecorators": true,
+      "sourceMap": true,
+      "noEmitHelpers": true
+  },
+  "exclude": [
+      "node_modules"
+  ],
+  "awesomeTypescriptLoaderOptions": {
+      "forkChecker": true,
+      "useWebpackText": true
+  }
+}
