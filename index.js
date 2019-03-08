@@ -4,4 +4,4 @@ import {
   SelectStoreInterface
 } from "./src/SBPowerSearch";
 
-export { SBPowerSearch, SearchType, SelectStoreInterface };
+export default { SBPowerSearch, SearchType, SelectStoreInterface };
