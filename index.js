@@ -3,5 +3,3 @@ export {
   default as SelectStoreInterface
 } from "./src/SBPowerSearch/lib/SelectStoreInterface";
 export { default as SearchType } from "./src/SBPowerSearch/lib/SearchType";
-
-module.exports = require('./src/SBPowerSearch/SBPowerSearch');
