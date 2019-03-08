@@ -46,11 +46,7 @@ class SBPowerSearch extends React.Component {
 
   constructor(props) {
     super(props);
-    this.store = new PowerSearchStore(
-      this.props.columns
-        ? this.props.columns
-        : this.props.store.searchAttributes
-    );
+    this.store = new PowerSearchStore(this.props.columns);
     this._updateValueList = this._updateValueList.bind(this);
     this._onSelect = this._onSelect.bind(this);
     this._onDeselect = this._onDeselect.bind(this);
@@ -255,20 +251,13 @@ class SBPowerSearch extends React.Component {
 
   _onSubmit(event) {
     event && event.preventDefault();
-    let filterParameters = [];
-    this.store.filterParameters.forEach(
-      item =>
-        (filterParameters = filterParameters.concat(item.toBodyParameter()))
-    );
+    //let filterParameters = [];
+    //this.store.filterParameters.forEach(item => (filterParameters = filterParameters.concat(item.toBodyParameter())));
 
-    this.props.store.searchFilter(
-      this.props.fixedFilter,
-      null,
-      filterParameters
-    );
+    //this.props.store.searchFilter(this.props.fixedFilter, null, filterParameters);
     this.refs.powerSearchSelect.blur();
     if (this.props.onSubmit) {
-      this.props.onSubmit(event);
+      this.props.onSubmit(event, this.store.filterParameters);
     }
   }
 
@@ -368,15 +357,12 @@ class SBPowerSearch extends React.Component {
 
 SBPowerSearch.defaultProps = {
   notContentMessage: "Nenhum registro encontrado",
-  style: { width: "100%" },
-  fixedFilter: {}
+  style: { width: "100%" }
 };
 
 SBPowerSearch.propTypes = {
-  columns: PropTypes.array,
-  store: PropTypes.any.isRequired,
-  fixedFilter: PropTypes.object,
-  onSubmit: PropTypes.func
+  columns: PropTypes.array.isRequired,
+  onSubmit: PropTypes.func.isRequired
 };
 
 export default SBPowerSearch;

@@ -3,14 +3,18 @@
   "version": "1.0.0",
   "description": "A set of components of the helena project",
   "main": "build/index.js",
-  "peerDependencies": {
+  "dependencies": {
     "antd": "^3.11.6",
     "react": "^16.6.3",
     "mobx": "^5.5.2",
     "mobx-react": "^5.3.6",
+    "react-highlight-words": "^0.16.0",
+    "react-dom": "^16.6.3",
     "mobx-react-devtools": "^4.2.15",
     "mobx-react-router": "^4.0.5",
-    "prop-types": "^15.6.2"
+    "prop-types": "^15.6.2",
+    "moment": "^2.22.2",
+    "date-fns": "^1.29.0"
   },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
