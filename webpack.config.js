@@ -7,7 +7,7 @@ module.exports = {
     libraryTarget: 'commonjs2'
   },
   module: {
-    rules: [
+    loaders: [
       {
         test: /\.js$/,
         include: path.resolve(__dirname, 'src/SBPowerSearch/'),
