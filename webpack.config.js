@@ -18,7 +18,13 @@ module.exports = {
             presets: ['env']
           }
         }
+      },
+      {
+        test: /\.js$/,
+        loader: 'babel-loader',
+        exclude: /node_modules/
       }
+      
     ]
   },
   externals: {
