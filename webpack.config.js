@@ -7,10 +7,10 @@ module.exports = {
     libraryTarget: 'commonjs2'
   },
   module: {
-    rules: [
+    loaders: [
       {
         test: /\.js$/,
-        include: path.resolve(__dirname, 'src'),
+        include: path.resolve(__dirname, 'src/SBPowerSearch/'),
         exclude: /(node_modules|bower_components|build)/,
         use: {
           loader: 'babel-loader',
@@ -18,7 +18,13 @@ module.exports = {
             presets: ['env']
           }
         }
+      },
+      {
+        test: /\.js$/,
+        loader: 'babel-loader',
+        exclude: /node_modules/
       }
+      
     ]
   },
   externals: {
