@@ -2,8 +2,22 @@
   "name": "helena",
   "version": "1.0.0",
   "description": "A set of components of the helena project",
-  "main": "build/index.js",
-
+  "main": "./distribution/index.js",
+  "files": [
+    "distribution"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Aillkeen/compoenent-test.git"
+  },
+  "keywords": [
+    "react",
+    "react-components"
+  ],
+  "peerDependencies": {
+    "react": "^16.0.0",
+    "react-dom": "^16.0.0"
+  },
   "dependencies": {
     "antd": "^3.11.6",
     "react": "^16.6.3",
