@@ -2,7 +2,6 @@ import React from "react";
 import PropTypes from "prop-types";
 
 import { Select, Form, Row, Col, DatePicker, Icon, Button } from "antd";
-//import { observer } from "mobx-react";
 import moment from "moment";
 
 import SearchObject from "./lib/SearchObject";
@@ -34,7 +33,7 @@ const buttonsColProps = {
   xl: { span: 3 },
   xxl: { span: 2 }
 };
-//@observer
+
 class SBPowerSearch extends React.Component {
   selectProps;
 
