@@ -1,8 +1,8 @@
 var path = require('path');
 module.exports = {
-  entry: './src/index.js/',
+  entry: './src/index.js',
   output: {
-    path: path.resolve(__dirname, 'output'),
+    path: path.resolve(__dirname, '/output/'),
     filename: 'output.js',
     libraryTarget: 'commonjs2'
   },
