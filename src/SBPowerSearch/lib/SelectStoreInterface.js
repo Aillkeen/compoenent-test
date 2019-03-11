@@ -1,12 +1,12 @@
 import { observable, action } from 'mobx';
 class SelectStoreInterface {
-  @observable
+  //@observable
   lista = [];
 
-  @observable
+  //@observable
   loading;
 
-  @observable
+  //@observable
   query;
 
   constructor() {
