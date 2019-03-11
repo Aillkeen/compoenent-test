@@ -1,30 +1,24 @@
 var path = require('path');
 module.exports = {
-  entry: './src/SBPowerSearch/SBPowerSearch.js',
+  entry: './src/index.js/',
   output: {
-    path: path.resolve(__dirname, 'build'),
-    filename: 'index.js',
+    path: path.resolve(__dirname, 'output'),
+    filename: 'output.js',
     libraryTarget: 'commonjs2'
   },
   module: {
-    loaders: [
+    rules: [
       {
         test: /\.js$/,
-        include: path.resolve(__dirname, 'src/SBPowerSearch/'),
-        exclude: /(node_modules|bower_components|build)/,
+        exclude: /node_modules/,
+        include: path.resolve(__dirname, '/src/'),
         use: {
           loader: 'babel-loader',
           options: {
-            presets: ['env']
+            presets: ["env","es2015", "stage-0", "react"]
           }
         }
-      },
-      {
-        test: /\.js$/,
-        loader: 'babel-loader',
-        exclude: /node_modules/
-      }
-      
+      }      
     ]
   },
   externals: {
