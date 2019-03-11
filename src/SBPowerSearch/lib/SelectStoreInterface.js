@@ -1,11 +1,11 @@
 
 class SelectStoreInterface {
 
-  lista = [];
+  let lista = [];
 
-  loading;
+  let loading;
 
-  query;
+  let query;
 
   constructor() {
     this._onPowerSearch = this._onPowerSearch.bind(this);

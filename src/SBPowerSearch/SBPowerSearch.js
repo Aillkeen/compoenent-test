@@ -35,13 +35,13 @@ const buttonsColProps = {
 };
 
 class SBPowerSearch extends React.Component {
-  selectProps;
+  let selectProps;
 
-  searchStore;
+  let searchStore;
 
-  openedDatePicker = false;
+  let openedDatePicker = false;
 
-  expectedArgs = null;
+  let expectedArgs = null;
 
   constructor(props) {
     super(props);
